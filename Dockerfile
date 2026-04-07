@@ -1,52 +1,20 @@
-# clean base image containing only comfyui, comfy-cli and comfyui-manager
 FROM runpod/worker-comfyui:5.5.1-base
 
-# install custom nodes into comfyui (first node with --mode remote to fetch updated cache)
-# The workflow lists only unknown_registry custom nodes without aux_id (no registry IDs provided).
-# These could not be automatically resolved or installed. Please provide either the ComfyUI registry IDs
-# for these packages or GitHub repo auxiliary IDs (aux_id) so they can be installed or cloned.
-# Missing/unresolved custom nodes from workflow (no aux_id provided):
-# - WanVideoModelLoader
-# - WanVideoDecode
-# - WanVideoTorchCompileSettings
-# - WanVideoVAELoader
-# - WanVideoBlockSwap
-# - WanVideoLoraSelect
-# - WanVideoSetLoRAs
-# - WanVideoSetBlockSwap
-# - WanVideoEmptyEmbeds
-# - ImageResizeKJv2
-# - VHS_LoadVideo
-# - ImageResizeKJv2
-# - VHS_VideoCombine
-# - VHS_VideoCombine
-# - INTConstant
-# - INTConstant
-# - FloatConstant
-# - ImageConcatMulti
-# - GetImageSizeAndCount
-# - WanVideoAddSCAILPoseEmbeds
-# - CLIPVisionLoader
-# - WanVideoClipVisionEncode
-# - ImageConcatMulti
-# - NLFPredict
-# - DownloadAndLoadNLFModel
-# - WanVideoSamplerv2
-# - WanVideoSchedulerv2
-# - WanVideoAddSCAILReferenceEmbeds
-# - WanVideoSamplerExtraArgs
-# - WanVideoContextOptions
-# - RenderNLFPoses
-# - PoseDetectionVitPoseToDWPose
-# - OnnxDetectionModelLoader
-# - PoseDetectionVitPoseToDWPose
-# - WanVideoTextEncodeCached
-# - SimpleCalculatorKJ
-# - SimpleCalculatorKJ
-# - DownloadAndLoadGIMMVFIModel
-# - GIMMVFI_interpolate
-# - FlashVSRInitPipe
-# - FlashVSRNodeAdv
+# Install custom nodes
+RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
+RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-KJNodes
+RUN cd /comfyui/custom_nodes && git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-Florence2
+RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-GIMM-VFI
+RUN cd /comfyui/custom_nodes && git clone https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast
+
+# Install Python dependencies
+RUN cd /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && pip install -r requirements.txt
+RUN cd /comfyui/custom_nodes/ComfyUI-KJNodes && pip install -r requirements.txt
+RUN cd /comfyui/custom_nodes/ComfyUI-VideoHelperSuite && pip install -r requirements.txt
+RUN cd /comfyui/custom_nodes/ComfyUI-Florence2 && pip install -r requirements.txt
+RUN cd /comfyui/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
+RUN cd /comfyui/custom_nodes/ComfyUI-FlashVSR_Ultra_Fast && pip install -r requirements.txt
 
 # download models into comfyui
 RUN comfy model download --url https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/SCAIL/Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors --relative-path models/diffusion_models --filename Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors
