@@ -13,7 +13,7 @@ apt-get update && apt-get install -y gcc g++ && rm -rf /var/lib/apt/lists/*
 # 2. Install custom nodes
 # -----------------------------------------------
 echo "[2/6] Installing custom nodes..."
-cd /comfyui/custom_nodes
+cd /ComfyUI/custom_nodes
 git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
 git clone https://github.com/kijai/ComfyUI-KJNodes
 git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
@@ -27,21 +27,21 @@ git clone https://github.com/kijai/ComfyUI-WanAnimatePreprocess
 # 3. Install Python dependencies
 # -----------------------------------------------
 echo "[3/6] Installing Python dependencies..."
-cd /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-KJNodes && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-VideoHelperSuite && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-Florence2 && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-FlashVSR_Ultra_Fast && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-SCAIL-Pose && pip install -r requirements.txt
-cd /comfyui/custom_nodes/ComfyUI-WanAnimatePreprocess && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-KJNodes && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-Florence2 && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-FlashVSR_Ultra_Fast && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-SCAIL-Pose && pip install -r requirements.txt
+cd /ComfyUI/custom_nodes/ComfyUI-WanAnimatePreprocess && pip install -r requirements.txt
 pip install sageattention
 
 # -----------------------------------------------
 # 4. Configure extra model paths (network volume)
 # -----------------------------------------------
 echo "[4/6] Configuring model paths..."
-cat > /comfyui/extra_model_paths.yaml << 'EOF'
+cat > /ComfyUI/extra_model_paths.yaml << 'EOF'
 runpod:
   base_path: /workspace/models/
   checkpoints: checkpoints/
@@ -62,7 +62,7 @@ runpod:
 EOF
 
 # Symlink FlashVSR model from network volume
-ln -sf /workspace/models/FlashVSR-v1.1 /comfyui/models/FlashVSR-v1.1
+ln -sf /workspace/models/FlashVSR-v1.1 /ComfyUI/models/FlashVSR-v1.1
 
 # -----------------------------------------------
 # 5. Download models to network volume (skip if already present)
@@ -119,4 +119,4 @@ fi
 echo "[6/6] Setup complete!"
 echo ""
 echo "Start ComfyUI with:"
-echo "  cd /comfyui && python main.py --listen 0.0.0.0 --port 8188"
+echo "  cd /ComfyUI && python main.py --listen 0.0.0.0 --port 8188"
