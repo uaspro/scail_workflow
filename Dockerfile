@@ -4,7 +4,7 @@ FROM runpod/worker-comfyui:5.8.5-base
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 
 # Symlink FlashVSR model to network volume so it doesn't re-download
-RUN echo '#!/bin/bash\nln -sf /runpod-volume/models/FlashVSR /comfyui/models/FlashVSR\nexec "$@"' > /pre_start.sh && chmod +x /pre_start.sh
+RUN ln -sf /runpod-volume/models/FlashVSR-v1.1 /comfyui/models/FlashVSR-v1.1
 
 # Install custom nodes
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
