@@ -7,6 +7,7 @@ COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 RUN ln -sf /runpod-volume/models/FlashVSR-v1.1 /comfyui/models/FlashVSR-v1.1
 
 RUN pip install sageattention
+RUN apt-get update && apt-get install -y gcc g++ && rm -rf /var/lib/apt/lists/*
 
 # Install custom nodes
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
