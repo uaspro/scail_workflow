@@ -25,5 +25,3 @@ RUN cd /comfyui/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-FlashVSR_Ultra_Fast && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-SCAIL-Pose && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-WanAnimatePreprocess && pip install -r requirements.txt
-
-# copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
