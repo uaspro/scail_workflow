@@ -25,14 +25,14 @@ clone_if_missing() {
     fi
 }
 
-clone_if_missing https://github.com/kijai/ComfyUI-WanVideoWrapper
-clone_if_missing https://github.com/kijai/ComfyUI-KJNodes
-clone_if_missing https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
-clone_if_missing https://github.com/kijai/ComfyUI-Florence2
-clone_if_missing https://github.com/kijai/ComfyUI-GIMM-VFI
-clone_if_missing https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast
-clone_if_missing https://github.com/kijai/ComfyUI-SCAIL-Pose
-clone_if_missing https://github.com/kijai/ComfyUI-WanAnimatePreprocess
+clone_if_missing ComfyUI-WanVideoWrapper https://github.com/kijai/ComfyUI-WanVideoWrapper
+clone_if_missing ComfyUI-KJNodes https://github.com/kijai/ComfyUI-KJNodes
+clone_if_missing ComfyUI-VideoHelperSuite https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+clone_if_missing ComfyUI-Florence2 https://github.com/kijai/ComfyUI-Florence2
+clone_if_missing ComfyUI-GIMM-VFI https://github.com/kijai/ComfyUI-GIMM-VFI
+clone_if_missing ComfyUI-FlashVSR_Ultra_Fast https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast
+clone_if_missing ComfyUI-SCAIL-Pose https://github.com/kijai/ComfyUI-SCAIL-Pose
+clone_if_missing ComfyUI-WanAnimatePreprocess https://github.com/kijai/ComfyUI-WanAnimatePreprocess
 
 # -----------------------------------------------
 # 3. Install Python dependencies
