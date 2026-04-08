@@ -6,6 +6,8 @@ COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 # Symlink FlashVSR model to network volume so it doesn't re-download
 RUN ln -sf /runpod-volume/models/FlashVSR-v1.1 /comfyui/models/FlashVSR-v1.1
 
+RUN pip install sageattention
+
 # Install custom nodes
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-KJNodes
