@@ -15,7 +15,6 @@ RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-GIMM-
 RUN cd /comfyui/custom_nodes && git clone https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-SCAIL-Pose
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanAnimatePreprocess
-RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-MultiGPU
 
 # Install Python dependencies
 RUN cd /comfyui/custom_nodes/ComfyUI-WanVideoWrapper && pip install -r requirements.txt
@@ -26,6 +25,5 @@ RUN cd /comfyui/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-FlashVSR_Ultra_Fast && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-SCAIL-Pose && pip install -r requirements.txt
 RUN cd /comfyui/custom_nodes/ComfyUI-WanAnimatePreprocess && pip install -r requirements.txt
-RUN cd /comfyui/custom_nodes/ComfyUI-MultiGPU && pip install -r requirements.txt
 
 # copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
