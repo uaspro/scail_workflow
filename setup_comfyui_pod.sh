@@ -61,9 +61,6 @@ runpod:
   other: other/
 EOF
 
-# Symlink FlashVSR model from network volume
-ln -sf /workspace/models/FlashVSR-v1.1 /ComfyUI/models/FlashVSR-v1.1
-
 # -----------------------------------------------
 # 5. Download models to network volume (skip if already present)
 # -----------------------------------------------
@@ -106,11 +103,11 @@ download_if_missing /workspace/models/text_encoders/umt5-xxl-enc-bf16.safetensor
     "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors"
 
 # FlashVSR v1.1 model
-if [ ! -d "/workspace/models/FlashVSR-v1.1" ] || [ -z "$(ls -A /workspace/models/FlashVSR-v1.1 2>/dev/null)" ]; then
+if [ ! -d "/workspace/runpod-slim/ComfyUI/models/FlashVSR-v1.1" ] || [ -z "$(ls -A /workspace/runpod-slim/ComfyUI/models/FlashVSR-v1.1 2>/dev/null)" ]; then
     echo "  Downloading FlashVSR-v1.1..."
-    python3 -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='JunhaoZhuang/FlashVSR-v1.1', local_dir='/workspace/models/FlashVSR-v1.1', local_dir_use_symlinks=False)"
+    python3 -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='JunhaoZhuang/FlashVSR-v1.1', local_dir='/workspace/runpod-slim/ComfyUI/models/FlashVSR-v1.1', local_dir_use_symlinks=False)"
 else
-    echo "  Already exists: /workspace/models/FlashVSR-v1.1"
+    echo "  Already exists: /workspace/runpod-slim/ComfyUI/models/FlashVSR-v1.1"
 fi
 
 # -----------------------------------------------
