@@ -15,7 +15,6 @@ apt-get update && apt-get install -y gcc g++ && rm -rf /var/lib/apt/lists/*
 echo "[2/6] Installing custom nodes..."
 cd /workspace/runpod-slim/ComfyUI/custom_nodes
 git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
-git clone https://github.com/kijai/ComfyUI-KJNodes
 git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
 git clone https://github.com/kijai/ComfyUI-Florence2
 git clone https://github.com/kijai/ComfyUI-GIMM-VFI
@@ -28,7 +27,6 @@ git clone https://github.com/kijai/ComfyUI-WanAnimatePreprocess
 # -----------------------------------------------
 echo "[3/6] Installing Python dependencies..."
 cd /workspace/runpod-slim/ComfyUI/custom_nodes/ComfyUI-WanVideoWrapper && pip install -r requirements.txt
-cd /workspace/runpod-slim/ComfyUI/custom_nodes/ComfyUI-KJNodes && pip install -r requirements.txt
 cd /workspace/runpod-slim/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite && pip install -r requirements.txt
 cd /workspace/runpod-slim/ComfyUI/custom_nodes/ComfyUI-Florence2 && pip install -r requirements.txt
 cd /workspace/runpod-slim/ComfyUI/custom_nodes/ComfyUI-GIMM-VFI && pip install -r requirements.txt
