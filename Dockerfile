@@ -1,7 +1,7 @@
 FROM runpod/worker-comfyui:5.8.5-base
 
 # Add network volume model paths
-RUN echo -e "\nrunpod_volume:\n  base_path: /runpod-volume/models/\n  diffusion_models: diffusion_models/\ntext_encoders: text_encoders/\n  detection: detection/\n  nlf: nlf/" >> /comfyui/extra_model_paths.yaml
+COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 
 # Install custom nodes
 RUN cd /comfyui/custom_nodes && git clone https://github.com/kijai/ComfyUI-WanVideoWrapper
